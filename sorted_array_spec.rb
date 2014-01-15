@@ -57,24 +57,24 @@ describe SortedArray do
 
   describe :find do
 
-    it "the find method should not find anything" do
-      sorted_array.find{|ele| ele == 24 }.should == nil
+    it "the find method should behave like find method for arrays" do
+      sorted_array.find{|ele| ele == 24 }.should == sorted_array.internal_arr.find {|ele| ele == 24}
     end
   
 
-    it "the find method should find the first element equal to 2" do
-      sorted_array.find{|ele| ele == 2 }.should == 2
+    it "the find method should behave like the find method for arrays" do
+      sorted_array.find{|ele| ele > 2 }.should  == sorted_array.internal_arr.find {|ele| ele > 2}
     end
   end
 
   describe :inject do
-    it "this example should multiply up all the values in sorted_array" do
-      sorted_array.inject(1){|sum, ele| sum * ele}.should == 1512
+    it "the inject method should behave like the inject method for arrays" do
+      sorted_array.inject{|sum, ele| sum * ele}.should == sorted_array.internal_arr.inject {|acc, ele| acc * ele }
     end
 
-    it "this example should sum up all the values in sorted_array" do
-      sorted_array.inject{|sum, ele| sum + ele}.should == 25
+    it "the inject method should behave like the inject method for arrays" do
+      sorted_array.inject{|sum, ele| sum + ele}.should == sorted_array.internal_arr.inject {|sum, ele| sum + ele }
     end
   end
-  
+
 end
