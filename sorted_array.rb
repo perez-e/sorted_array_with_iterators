@@ -40,7 +40,7 @@ class SortedArray
   def each &block
       index = 0
       while index <= @internal_arr.length-1 
-        block.call(@internal_arr[index])
+        yield @internal_arr[index]
         index += 1
       end
       @internal_arr
@@ -50,7 +50,7 @@ class SortedArray
     arr = []
     index = 0
     each do |element|
-      arr[index] = block.call(element)
+      arr[index] = yield element
       index += 1
     end
     arr
@@ -66,13 +66,12 @@ class SortedArray
   end
 
   def find &block
-    value = nil
     index = 0
-    each do |element|
-      value = @internal_arr[index] if yield element
+    while index <= @internal_arr.length-1
+      return @internal_arr[index] if yield @internal_arr[index]
       index += 1
     end
-    return value 
+    nil
   end
 
   def inject acc=nil, &block
