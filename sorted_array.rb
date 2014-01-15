@@ -48,10 +48,8 @@ class SortedArray
 
   def map &block
     arr = []
-    index = 0
     each do |element|
-      arr[index] = yield element
-      index += 1
+      arr.push yield element
     end
     arr
   end
