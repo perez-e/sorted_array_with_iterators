@@ -75,7 +75,11 @@ class SortedArray
     return value 
   end
 
-  def inject acc=nil, &block
-
+  def inject acc=0, &block
+    each do |element|
+      acc = yield acc, element
+    end
+    acc
   end
+
 end
