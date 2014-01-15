@@ -75,9 +75,12 @@ class SortedArray
     return value 
   end
 
-  def inject acc=0, &block
-    each do |element|
-      acc = yield acc, element
+  def inject acc=nil, &block
+    index = acc.nil? ? 1 : 0
+    acc = @internal_arr[0] if acc.nil?
+    while index <= @internal_arr.length-1
+      acc = yield acc, @internal_arr[index]
+      index += 1
     end
     acc
   end
