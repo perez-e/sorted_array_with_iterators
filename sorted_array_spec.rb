@@ -77,4 +77,15 @@ describe SortedArray do
     end
   end
 
+  describe :select do 
+    it "the select method should behave like the select method for arrays" do 
+      sorted_array.select {|ele| ele < 5}.should == sorted_array.internal_arr.select {|ele| ele < 5}
+    end
+
+    it "the select method should behave like the select method for arrays" do 
+      sorted_array.select {|ele| ele >= 10}.should == sorted_array.internal_arr.select {|ele| ele >= 10}
+    end
+
+  end
+
 end
