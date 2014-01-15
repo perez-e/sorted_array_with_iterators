@@ -57,15 +57,24 @@ describe SortedArray do
 
   describe :find do
 
-    it "does not currently have any examples for it" do
+    it "the find method should not find anything" do
+      sorted_array.find{|ele| ele == 24 }.should == nil
+    end
+  
+
+    it "the find method should find the first element equal to 2" do
       sorted_array.find{|ele| ele == 2 }.should == 2
     end
   end
 
   describe :inject do
+    it "this example should multiply up all the values in sorted_array" do
+      sorted_array.inject(1){|sum, ele| sum * ele}.should == 1512
+    end
 
-    it "does not currently have any examples for it" do
-      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
+    it "this example should sum up all the values in sorted_array" do
+      sorted_array.inject{|sum, ele| sum + ele}.should == 25
     end
   end
+  
 end
