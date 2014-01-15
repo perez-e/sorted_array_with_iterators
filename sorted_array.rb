@@ -82,4 +82,11 @@ class SortedArray
     acc
   end
 
+  def select &block
+    arr = []
+    each do |element|
+      arr.push(element) if yield element
+    end 
+    arr
+  end
 end
