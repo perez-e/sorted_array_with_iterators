@@ -34,7 +34,8 @@ describe SortedArray do
         it_should_behave_like "yield to all elements in sorted array", :map
 
         it 'creates a new array containing the values returned by the block' do
-          pending "fill this spec in with a meaningful example"
+          new_array = sorted_array.map {|ele| ele*2}
+          new_array.should == [4,6,8,14,18]
         end
       end
     end
@@ -42,28 +43,26 @@ describe SortedArray do
     describe "that update the original array" do
       describe :map! do
         it 'the original array should be updated' do
-          pending "fill this spec in with a meaningful example"
+          sorted_array.map! {|ele| ele - 1}.should == [1,2,3,6,8]
         end
 
         it_should_behave_like "yield to all elements in sorted array", :map!
 
         it 'should replace value of each element with the value returned by block' do
-          pending "this is just the same as the example above"
+          sorted_array.map! {|ele| ele *2}.should == [4,6,8,14,18]
         end
       end
     end
   end
 
   describe :find do
-    it_should_behave_like "yield to all elements in sorted array", :find
 
     it "does not currently have any examples for it" do
-      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
+      sorted_array.find{|ele| ele == 2 }.should == 2
     end
   end
 
   describe :inject do
-    it_should_behave_like "yield to all elements in sorted array", :inject
 
     it "does not currently have any examples for it" do
       pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
